@@ -1,0 +1,370 @@
+BEGIN:VCALENDAR
+X-WR-CALNAME:Розклад занять СумДУ
+X-WR-TIMEZONE:Europe/Kiev
+X-PUBLISHED-TTL:PT12H
+METHOD:PUBLISH
+PRODID:-//John Papaioannou/NONSGML Bennu 0.1//EN
+VERSION:2.0
+BEGIN:VEVENT
+UID:4d7fc4d07f88bab3bb125df3a18dbe7e@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260116T120325Z
+DTSTART;TZID=Europe/Kiev:20260212T114000
+DTEND;TZID=Europe/Kiev:20260212T130000
+SUMMARY:Технології захисту інформації (лабораторне заняття)
+LOCATION:
+DESCRIPTION:Пугач Ігор Олександрович\nІН-23\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION:Технології захисту інформації (лабораторне заняття) починається 12.02.2026 о 11:40
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:3e3b0f8cec52218e1e5c0da1b1424c7a@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260128T150112Z
+DTSTART;TZID=Europe/Kiev:20260212T140000
+DTEND;TZID=Europe/Kiev:20260212T152000
+SUMMARY:Технічна підтримка програмного забезпечення (лабораторне заняття)
+LOCATION:
+DESCRIPTION:Дегтярьов Владислав Валерійович\nІН-23\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION:Технічна підтримка програмного забезпечення (лабораторне заняття) починається 12.02.2026 о 14:00
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:df7502b70cb3d8fc2627e9c4820c5546@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260128T150112Z
+DTSTART;TZID=Europe/Kiev:20260212T153500
+DTEND;TZID=Europe/Kiev:20260212T165500
+SUMMARY:Технічна підтримка програмного забезпечення (лабораторне заняття)
+LOCATION:
+DESCRIPTION:Дегтярьов Владислав Валерійович\nІН-23\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION:Технічна підтримка програмного забезпечення (лабораторне заняття) починається 12.02.2026 о 15:35
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:03980f9db772edf5d1ec58a848925a86@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260114T122127Z
+DTSTART;TZID=Europe/Kiev:20260212T171000
+DTEND;TZID=Europe/Kiev:20260212T183000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІН-31\, ІН-31/1\, ІН-31/2\, ІН-32\, ІН-32/1\, ІН-32/2\, ІН-33\, ІН-33-4\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ІТ-31\, ІТ-31/1\, ІТ-31/2\, ІТ-32\, ІТ-32/1\, ІТ-32/2\, ІТ-33\, ІТ-33-4\n\nВНД ПП за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 12.02.2026 о 17:10
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:757c1ecba89401e631a9fbeae679d8a3@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260213T083000
+DTEND;TZID=Europe/Kiev:20260213T095000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 13.02.2026 о 08:30
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dea4730362c5c8380c4cc8830d845290@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260213T100500
+DTEND;TZID=Europe/Kiev:20260213T112500
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 13.02.2026 о 10:05
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d9bb822b2436fab73e113fa7a1062650@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260213T114000
+DTEND;TZID=Europe/Kiev:20260213T130000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 13.02.2026 о 11:40
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:58773e9440b66a3ce6f8aca39953f476@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260213T140000
+DTEND;TZID=Europe/Kiev:20260213T152000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 13.02.2026 о 14:00
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:b2cb54749f479ff738cb3e748599e230@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260213T153500
+DTEND;TZID=Europe/Kiev:20260213T165500
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 13.02.2026 о 15:35
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9102c18aa9e4c8fd33063b42236ac270@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260213T171000
+DTEND;TZID=Europe/Kiev:20260213T183000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 13.02.2026 о 17:10
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:08d574d52c2edb31a78f1242fe97692b@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260214T083000
+DTEND;TZID=Europe/Kiev:20260214T095000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 14.02.2026 о 08:30
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:3058ee16b9a74efa1ad31bdb37e7cd8f@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260214T100500
+DTEND;TZID=Europe/Kiev:20260214T112500
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 14.02.2026 о 10:05
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:e5304c1b70de1c2f8b7eced04c405fd0@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260214T114000
+DTEND;TZID=Europe/Kiev:20260214T130000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 14.02.2026 о 11:40
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:4ae5f4c074aab051c52de1331e60f3b0@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260214T140000
+DTEND;TZID=Europe/Kiev:20260214T152000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 14.02.2026 о 14:00
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fbffec76d8bec52a5148b9a9b02e7a53@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260214T153500
+DTEND;TZID=Europe/Kiev:20260214T165500
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 14.02.2026 о 15:35
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:5758f6635a72ed97fcf11b09fa8a362f@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260108T115631Z
+DTSTART;TZID=Europe/Kiev:20260214T171000
+DTEND;TZID=Europe/Kiev:20260214T183000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ПМ-21\n\nВНД за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 14.02.2026 о 17:10
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:784768a0aee2142748718c8ff1965144@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260115T110530Z
+DTSTART;TZID=Europe/Kiev:20260216T100500
+DTEND;TZID=Europe/Kiev:20260216T112500
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІН-31\, ІН-31/1\, ІН-31/2\, ІН-32\, ІН-32/1\, ІН-32/2\, ІН-33\, ІН-33-4\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ІТ-31\, ІТ-31/1\, ІТ-31/2\, ІТ-32\, ІТ-32/1\, ІТ-32/2\, ІТ-33\, ІТ-33-4\n\nВНД ПП за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 16.02.2026 о 10:05
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:af4d3b6e8ada0f4cae41923ff005492f@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260115T110530Z
+DTSTART;TZID=Europe/Kiev:20260216T114000
+DTEND;TZID=Europe/Kiev:20260216T130000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІН-31\, ІН-31/1\, ІН-31/2\, ІН-32\, ІН-32/1\, ІН-32/2\, ІН-33\, ІН-33-4\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ІТ-31\, ІТ-31/1\, ІТ-31/2\, ІТ-32\, ІТ-32/1\, ІТ-32/2\, ІТ-33\, ІТ-33-4\n\nВНД ПП за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 16.02.2026 о 11:40
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2befaf8d5f5d0c23a4bd1df4f1ed68e6@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260116T115832Z
+DTSTART;TZID=Europe/Kiev:20260216T140000
+DTEND;TZID=Europe/Kiev:20260216T152000
+SUMMARY:Технології захисту інформації (лекція)
+LOCATION:
+DESCRIPTION:Ободяк Віктор Корнелійович\nІН-23\, ІН-21/1\, ІН-21/2\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION:Технології захисту інформації (лекція) починається 16.02.2026 о 14:00
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f85e5a67f237e739628b37909b46e0c9@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260115T111707Z
+DTSTART;TZID=Europe/Kiev:20260217T083000
+DTEND;TZID=Europe/Kiev:20260217T095000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІН-31\, ІН-31/1\, ІН-31/2\, ІН-32\, ІН-32/1\, ІН-32/2\, ІН-33\, ІН-33-4\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ІТ-31\, ІТ-31/1\, ІТ-31/2\, ІТ-32\, ІТ-32/1\, ІТ-32/2\, ІТ-33\, ІТ-33-4\n\nВНД ПП за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 17.02.2026 о 08:30
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:697a877ad5a73792a0b401bb5ca27ce9@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260115T111707Z
+DTSTART;TZID=Europe/Kiev:20260217T100500
+DTEND;TZID=Europe/Kiev:20260217T112500
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІН-31\, ІН-31/1\, ІН-31/2\, ІН-32\, ІН-32/1\, ІН-32/2\, ІН-33\, ІН-33-4\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ІТ-31\, ІТ-31/1\, ІТ-31/2\, ІТ-32\, ІТ-32/1\, ІТ-32/2\, ІТ-33\, ІТ-33-4\n\nВНД ПП за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 17.02.2026 о 10:05
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:58c96e73550ab48d5eb945bb9cfa7479@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260115T111707Z
+DTSTART;TZID=Europe/Kiev:20260217T114000
+DTEND;TZID=Europe/Kiev:20260217T130000
+SUMMARY:
+LOCATION:
+DESCRIPTION:ІН-23\, ІН-21\, ІН-21/1\, ІН-21/2\, ІН-22\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\, ІН-31\, ІН-31/1\, ІН-31/2\, ІН-32\, ІН-32/1\, ІН-32/2\, ІН-33\, ІН-33-4\, ІТ-21\, ІТ-21/1\, ІТ-21/2\, ІТ-22\, ІТ-22/1\, ІТ-22/2\, ІТ-23\, ІТ-23-3\, ІТ-23/1\, ІТ-23/2\, ІТ-31\, ІТ-31/1\, ІТ-31/2\, ІТ-32\, ІТ-32/1\, ІТ-32/2\, ІТ-33\, ІТ-33-4\n\nВНД ПП за розкладом динамічної групи\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION: починається 17.02.2026 о 11:40
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:df29cba12fd545f271a470c482058919@sh.cabinet.sumdu.edu.ua
+DTSTAMP:20260116T115914Z
+DTSTART;TZID=Europe/Kiev:20260217T140000
+DTEND;TZID=Europe/Kiev:20260217T152000
+SUMMARY:Технічна підтримка програмного забезпечення (лекція)
+LOCATION:
+DESCRIPTION:П`ятаченко Владислав Юрійович\nІН-23\, ІН-21/1\, ІН-21/2\, ІН-22/1\, ІН-22/2\, ІН-24\, ІН-24/1у\, ІН-24/2і\, ІН-26-3\n\nhttps://sh.cabinet.sumdu.edu.ua/
+CLASS:PUBLIC
+BEGIN:VALARM
+DESCRIPTION:Технічна підтримка програмного забезпечення (лекція) починається 17.02.2026 о 14:00
+TRIGGER:-PT30M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VTIMEZONE
+TZID:Europe/Kiev
+BEGIN:STANDARD
+TZNAME:EET
+TZOFFSETTO:+0200
+TZOFFSETFROM:+0300
+DTSTART:19701025T040000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+BEGIN:DAYLIGHT
+TZNAME:EEST
+TZOFFSETTO:+0300
+TZOFFSETFROM:+0200
+DTSTART:19700329T030000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+END:VTIMEZONE
+END:VCALENDAR

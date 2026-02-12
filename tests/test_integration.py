@@ -6,6 +6,7 @@ import sqlite3
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+
 class TestIntegration:
     """Інтеграційні тести взаємодії компонентів системи"""
     
@@ -19,12 +20,12 @@ class TestIntegration:
     def test_data(self):
         return {
             'events': [
-                (1, '2025-09-16', '10:00', 'Математика', '301', 'КС-21'),
-                (2, '2025-09-16', '12:00', 'Фізика', '201', 'КС-21')
+                (1, '2025-09-16', '10:00', 'Математика', '301', 'КС-21', None, 'lecture'),
+                (2, '2025-09-16', '12:00', 'Фізика', '201', 'КС-21', None, 'lecture')
             ],
             'users': [
-                (123456789, 'КС-21', 'Іван Іванов', 0, 1),
-                (987654321, 'КС-21', 'Петро Петренко', 0, 0)
+                (123456789, 'КС-21', 'Іван Іванов', 'student', 0, 1),
+                (987654321, 'КС-21', 'Петро Петренко', 'student', 0, 0)
             ]
         }
 
@@ -37,6 +38,7 @@ class TestIntegration:
         
         # Створюємо тимчасову базу даних
         conn = sqlite3.connect(':memory:')
+        conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         
         # Ініціалізуємо схему (таку ж як у реальній БД)
@@ -45,8 +47,11 @@ class TestIntegration:
             user_id INTEGER PRIMARY KEY,
             group_name TEXT,
             full_name TEXT,
+            role TEXT DEFAULT 'student',
             is_admin INTEGER DEFAULT 0,
-            notifications_enabled INTEGER DEFAULT 1
+            notifications_enabled INTEGER DEFAULT 1,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
         ''')
         
@@ -57,26 +62,29 @@ class TestIntegration:
             time TEXT NOT NULL,
             title TEXT NOT NULL,
             room TEXT,
-            group_name TEXT NOT NULL
+            group_name TEXT NOT NULL,
+            teacher_id INTEGER,
+            lesson_type TEXT DEFAULT 'lecture',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
         ''')
         
         # Додаємо тестові дані
         cursor.executemany(
-            "INSERT INTO users VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)",
             [
-                (111111111, 'ІН-23', 'Тест Користувач 1', 0, 1),
-                (222222222, 'ІН-23', 'Тест Користувач 2', 0, 0),  # вимкнені сповіщення
-                (333333333, 'КС-21', 'Тест Користувач 3', 0, 1),
+                (111111111, 'ІН-23', 'Тест Користувач 1', 'student', 0, 1),
+                (222222222, 'ІН-23', 'Тест Користувач 2', 'student', 0, 0),  # вимкнені сповіщення
+                (333333333, 'КС-21', 'Тест Користувач 3', 'student', 0, 1),
             ]
         )
         
         cursor.executemany(
-            "INSERT INTO events (date, time, title, room, group_name) VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO events (date, time, title, room, group_name, teacher_id, lesson_type) VALUES (?, ?, ?, ?, ?, ?, ?)",
             [
-                ('2025-09-16', '10:00', 'Математика', '301', 'ІН-23'),
-                ('2025-09-16', '12:00', 'Фізика', '201', 'ІН-23'),
-                ('2025-09-17', '14:00', 'Програмування', '101', 'КС-21'),
+                ('2025-09-16', '10:00', 'Математика', '301', 'ІН-23', None, 'lecture'),
+                ('2025-09-16', '12:00', 'Фізика', '201', 'ІН-23', None, 'lecture'),
+                ('2025-09-17', '14:00', 'Програмування', '101', 'КС-21', None, 'practice'),
             ]
         )
         
@@ -95,7 +103,7 @@ class TestIntegration:
             
             # 2. Перевіряємо логіку фільтрації користувачів з увімкненими сповіщеннями
             cursor.execute('''
-                SELECT user_id, group_name, full_name, is_admin, notifications_enabled 
+                SELECT user_id, group_name, full_name, role, is_admin, notifications_enabled 
                 FROM users 
                 WHERE group_name = ? AND notifications_enabled = 1
             ''', ('ІН-23',))
@@ -106,7 +114,7 @@ class TestIntegration:
             
             # 3. Перевіряємо отримання подій за групою
             cursor.execute('''
-                SELECT id, date, time, title, room, group_name 
+                SELECT id, date, time, title, room, group_name, teacher_id, lesson_type
                 FROM events 
                 WHERE group_name = ?
                 ORDER BY date, time
@@ -119,7 +127,7 @@ class TestIntegration:
             
             # 4. Перевіряємо отримання подій за датою
             cursor.execute('''
-                SELECT id, date, time, title, room, group_name 
+                SELECT id, date, time, title, room, group_name, teacher_id, lesson_type
                 FROM events 
                 WHERE date = ?
                 ORDER BY time
@@ -214,7 +222,8 @@ class TestIntegration:
              patch('handlers.student_commands.datetime') as mock_datetime:
             
             mock_datetime.now.return_value.date.return_value.isoformat.return_value = '2025-09-16'
-            mock_get_user.return_value = (123456789, 'КС-21', 'Іван Іванов', 0, 1)
+            # Повертаємо дані з новою схемою (з role)
+            mock_get_user.return_value = (123456789, 'КС-21', 'Іван Іванов', 'student', 0, 1)
             mock_get_events.return_value = test_data['events']
             
             await today_command(mock_message)

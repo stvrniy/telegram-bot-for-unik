@@ -1,28 +1,21 @@
+import logging
 from aiogram import Router, F
 from aiogram.filters import Command
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from config.settings import settings
-from database.models import get_users_by_name, add_event, get_events, edit_event, delete_event, get_all_events, get_users_for_group
+from database.models import get_users_by_name, add_event, get_events, edit_event, delete_event, get_all_events, get_users_for_group, update_user_role, get_user
 from datetime import datetime
-from functools import wraps
+from utils.decorators import admin_only
+
+logger = logging.getLogger(__name__)
 
 router = Router()
 
 class NotifyGroupStates(StatesGroup):
     waiting_for_group = State()
     waiting_for_message = State()
-
-def admin_only(func):
-    @wraps(func)
-    async def wrapper(message: Message, *args, **kwargs):
-        user_id = message.from_user.id
-        if user_id not in settings.ADMIN_IDS:
-            await message.answer("❌ Ця команда доступна лише адміністраторам")
-            return
-        return await func(message, *args, **kwargs)
-    return wrapper
 
 @router.message(Command("admin_help"))
 @router.message(Command("admin_commands"))
@@ -31,23 +24,32 @@ async def admin_help_command(message: Message):
     help_text = (
         "👨‍💼 *Список всіх адмін-команд:*\n\n"
         "📤 Робота з розкладом:\n"
-        "`/upload_schedule` - завантажити розклад з PDF файлу 🚧\n"
+        "`/upload_ics` - завантажити розклад з .ics файлу\n"
+        "`/schedule_week` - розклад на тиждень\n"
+        "`/tomorrow` - розклад на завтра\n"
+        "`/clear_schedule` - очистити розклад\n\n"
+        "📅 Робота з подіями:\n"
         "`/add_event <дата> <час> <назва> <аудиторія> <група>` - додати подію\n"
         "`/edit_event <id> <дата> <час> <назва> <аудиторія> <група>` - редагувати подію\n"
         "`/delete_event <id>` - видалити подію\n"
         "`/all_events` - переглянути всі події\n\n"
+        "📚 Робота з предметами:\n"
+        "`/add_subject` - додати предмет до групи\n"
+        "`/my_subjects` - переглянути предмети групи\n\n"
         "📢 Повідомлення:\n"
         "`/notify_group` - відправити повідомлення всій групі\n"
         "`/notify_student` - відправити повідомлення конкретному студенту\n"
         "`/list_students` - список всіх студентів\n\n"
+        "👥 Управління ролями:\n"
+        "`/set_user_role <user_id> <роль>` - призначити роль\n"
+        "`/get_user_role <user_id>` - переглянути роль\n\n"
         "📊 Статистика:\n"
         "`/stats` - статистика користувачів\n\n"
         "ℹ️ Довідка:\n"
         "`/admin_help` - ця довідка\n"
         "`/admin_commands` - список адмін-команд\n\n"
         "👥 Звичайні команди також доступні:\n"
-        "`/help` - довідка для студентів\n\n"
-        "🚧 - функція планується до додавання"
+        "`/help` - довідка для студдентів"
     )
     await message.answer(help_text, parse_mode="Markdown")
 
@@ -87,7 +89,7 @@ async def process_group_message(message: Message, state: FSMContext):
             )
             sent_count += 1
         except Exception as e:
-            print(f"Не вдалося відправити повідомлення користувачу {user[0]}: {e}")
+            logger.error(f"Не вдалося відправити повідомлення користувачу {user[0]}: {e}")
     
     await message.answer(f"✅ Повідомлення відправлено {sent_count} студентам групи {group_name}")
     await state.clear()
@@ -126,7 +128,7 @@ async def notify_student_command(message: Message):
             )
             sent_count += 1
         except Exception as e:
-            print(f"Не вдалося надіслати повідomлення студенту {student[0]}: {e}")
+            logger.error(f"Не вдалося надіслати повідомлення студенту {student[0]}: {e}")
 
     await message.answer(f"✅ Повідомлення надіслано {sent_count} студентам")
 
@@ -135,11 +137,10 @@ async def notify_student_command(message: Message):
 async def list_students_command(message: Message):
     from database.models import get_db_connection
     
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM users ORDER BY group_name, full_name')
-    users = cursor.fetchall()
-    conn.close()
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM users ORDER BY group_name, full_name')
+        users = cursor.fetchall()
     
     if not users:
         await message.answer("📭 Немає зареєстрованих студентів")
@@ -168,26 +169,24 @@ async def list_students_command(message: Message):
 async def stats_command(message: Message):
     from database.models import get_db_connection
     
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    
-    # Отримуємо статистику користувачів
-    cursor.execute('SELECT COUNT(*) FROM users')
-    total_users = cursor.fetchone()[0]
-    
-    cursor.execute('SELECT COUNT(*) FROM users WHERE is_admin = 1')
-    admin_users = cursor.fetchone()[0]
-    
-    cursor.execute('SELECT COUNT(*) FROM users WHERE notifications_enabled = 1')
-    notifications_enabled = cursor.fetchone()[0]
-    
-    cursor.execute('SELECT COUNT(DISTINCT group_name) FROM users WHERE group_name IS NOT NULL')
-    groups_count = cursor.fetchone()[0]
-    
-    cursor.execute('SELECT COUNT(*) FROM events')
-    events_count = cursor.fetchone()[0]
-    
-    conn.close()
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
+        
+        # Отримуємо статистику користувачів
+        cursor.execute('SELECT COUNT(*) FROM users')
+        total_users = cursor.fetchone()[0]
+        
+        cursor.execute('SELECT COUNT(*) FROM users WHERE is_admin = 1')
+        admin_users = cursor.fetchone()[0]
+        
+        cursor.execute('SELECT COUNT(*) FROM users WHERE notifications_enabled = 1')
+        notifications_enabled = cursor.fetchone()[0]
+        
+        cursor.execute('SELECT COUNT(DISTINCT group_name) FROM users WHERE group_name IS NOT NULL')
+        groups_count = cursor.fetchone()[0]
+        
+        cursor.execute('SELECT COUNT(*) FROM events')
+        events_count = cursor.fetchone()[0]
     
     stats_text = (
         "📊 *Статистика бота:*\n\n"
@@ -296,3 +295,138 @@ async def all_events_command(message: Message):
             await message.answer(part, parse_mode="Markdown")
     else:
         await message.answer(response, parse_mode="Markdown")
+
+
+# ============ Команди для призначення ролей ============
+
+@router.message(Command("set_user_role"))
+@admin_only
+async def set_user_role_command(message: Message):
+    """
+    Призначити роль користувачу.
+    Формат: /set_user_role <user_id> <роль>
+    
+    Доступні ролі:
+    - student (за замовчуванням)
+    - group_leader (староста)
+    - teacher (викладач)
+    - admin (адмін)
+    """
+    from database.models import UserRole
+    
+    args = message.text.split(maxsplit=2)
+    
+    if len(args) < 3:
+        await message.answer(
+            "❌ Неправильний формат!\n\n"
+            "Формат: `/set_user_role <user_id> <роль>`\n\n"
+            "Доступні ролі:\n"
+            "• `student` - студент\n"
+            "• `group_leader` - староста\n"
+            "• `teacher` - викладач\n"
+            "• `admin` - адмін\n\n"
+            "Приклад: `/set_user_role 123456789 group_leader`",
+            parse_mode="Markdown"
+        )
+        return
+    
+    try:
+        user_id = int(args[1])
+    except ValueError:
+        await message.answer("❌ user_id має бути числом!")
+        return
+    
+    role_input = args[2].lower().strip()
+    
+    role_map = {
+        'student': UserRole.STUDENT.value,
+        'group_leader': UserRole.GROUP_LEADER.value,
+        'teacher': UserRole.TEACHER.value,
+        'admin': UserRole.ADMIN.value,
+    }
+    
+    if role_input not in role_map:
+        await message.answer(
+            "❌ Невідома роль!\n\n"
+            "Доступні ролі: student, group_leader, teacher, admin",
+            parse_mode="Markdown"
+        )
+        return
+    
+    role = role_map[role_input]
+    
+    # Перевіряємо чи користувач існує
+    user = get_user(user_id)
+    if not user:
+        await message.answer(f"❌ Користувач з ID {user_id} не знайдено!")
+        return
+    
+    success = update_user_role(user_id, role)
+    
+    if success:
+        role_names = {
+            UserRole.STUDENT.value: '👨‍🎓 Студент',
+            UserRole.GROUP_LEADER.value: '👑 Староста',
+            UserRole.TEACHER.value: '👨‍🏫 Викладач',
+            UserRole.ADMIN.value: '👨‍💼 Адміністратор'
+        }
+        await message.answer(
+            f"✅ Роль призначено!\n\n"
+            f"👤 Користувач: {user[2] if user[2] else user_id}\n"
+            f"🪪 Нова роль: *{role_names.get(role, role)}*",
+            parse_mode="Markdown"
+        )
+        logger.info(f"User {message.from_user.id} set role {role} for user {user_id}")
+    else:
+        await message.answer("❌ Помилка при призначенні ролі!")
+
+
+@router.message(Command("get_user_role"))
+@admin_only
+async def get_user_role_command(message: Message):
+    """
+    Переглянути роль користувача.
+    Формат: /get_user_role <user_id>
+    """
+    from database.models import UserRole
+    
+    args = message.text.split(maxsplit=1)
+    
+    if len(args) < 2:
+        await message.answer(
+            "❌ Неправильний формат!\n\n"
+            "Формат: `/get_user_role <user_id>`\n\n"
+            "Приклад: `/get_user_role 123456789`",
+            parse_mode="Markdown"
+        )
+        return
+    
+    try:
+        user_id = int(args[1])
+    except ValueError:
+        await message.answer("❌ user_id має бути числом!")
+        return
+    
+    user = get_user(user_id)
+    
+    if not user:
+        await message.answer(f"❌ Користувач з ID {user_id} не знайдено!")
+        return
+    
+    role = user[3] if len(user) > 3 else 'student'
+    
+    role_names = {
+        UserRole.STUDENT.value: '👨‍🎓 Студент',
+        UserRole.GROUP_LEADER.value: '👑 Староста',
+        UserRole.TEACHER.value: '👨‍🏫 Викладач',
+        UserRole.ADMIN.value: '👨‍💼 Адміністратор'
+    }
+    
+    await message.answer(
+        f"👤 *Інформація про користувача:*\n\n"
+        f"🆔 ID: {user_id}\n"
+        f"👨‍💼 Ім'я: {user[2] if user[2] else 'Невідомо'}\n"
+        f"🏫 Група: {user[1] if user[1] else 'Не вказано'}\n"
+        f"🪪 Роль: *{role_names.get(role, role)}*",
+        parse_mode="Markdown"
+    )
