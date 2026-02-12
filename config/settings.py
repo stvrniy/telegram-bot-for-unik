@@ -18,7 +18,7 @@ if env_path.exists():
 @dataclass
 class Settings:
     """Application settings loaded from environment variables."""
-    
+
     BOT_TOKEN: str = field(default_factory=lambda: os.getenv("BOT_TOKEN", ""))
     ADMIN_IDS: Set[int] = field(
         default_factory=lambda: set(
@@ -31,9 +31,7 @@ class Settings:
     NOTIFICATION_INTERVAL_MINUTES: int = field(
         default_factory=lambda: int(os.getenv("NOTIFICATION_INTERVAL_MINUTES", 15))
     )
-    TIME_FORMAT: str = field(
-        default_factory=lambda: os.getenv("TIME_FORMAT", "%H:%M")
-    )
+    TIME_FORMAT: str = field(default_factory=lambda: os.getenv("TIME_FORMAT", "%H:%M"))
     DATE_FORMAT: str = field(
         default_factory=lambda: os.getenv("DATE_FORMAT", "%Y-%m-%d")
     )

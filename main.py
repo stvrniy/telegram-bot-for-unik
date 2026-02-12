@@ -17,8 +17,7 @@ from handlers.teacher_commands import router as teacher_router
 from services.scheduler import SchedulerService
 
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 logger = logging.getLogger(__name__)
 
@@ -29,13 +28,13 @@ async def main():
     if not settings.is_valid():
         logger.error("Invalid configuration! Please check .env file")
         return
-    
+
     init_db()
     logger.info("Database initialized")
-    
+
     bot = Bot(token=settings.BOT_TOKEN)
     dp = Dispatcher()
-    
+
     # Register routers
     dp.include_router(student_router)
     dp.include_router(admin_router)
@@ -43,10 +42,10 @@ async def main():
     dp.include_router(cabinet_router)
     dp.include_router(ics_router)
     dp.include_router(teacher_router)
-    
+
     scheduler = SchedulerService(bot)
     scheduler.start()
-    
+
     logger.info("Bot starting...")
     try:
         await dp.start_polling(bot)
@@ -59,4 +58,5 @@ async def main():
 
 if __name__ == "__main__":
     import asyncio
+
     asyncio.run(main())

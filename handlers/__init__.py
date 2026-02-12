@@ -8,10 +8,10 @@ from .ics_schedule import router as ics_router
 from .teacher_commands import router as teacher_router
 
 __all__ = [
-    'student_router',
-    'admin_router',
-    'communication_router',
-    'cabinet_router',
-    'ics_router',
-    'teacher_router'
+    "student_router",
+    "admin_router",
+    "communication_router",
+    "cabinet_router",
+    "ics_router",
+    "teacher_router",
 ]
