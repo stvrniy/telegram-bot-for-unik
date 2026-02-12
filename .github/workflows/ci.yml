@@ -5,8 +5,16 @@ name: CI
 on:
   push:
     branches: [main, develop]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - '.gitignore'
   pull_request:
     branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - '.gitignore'
 
 env:
   PYTHON_VERSION: '3.11'
@@ -29,17 +37,17 @@ jobs:
         run: |
           pip install flake8 black isort
       
-      - name: Run flake8
+      - name: Run flake8 (Python only)
         run: |
-          flake8 . --max-line-length=100 --show-source --statistics
+          flake8 *.py config/ database/ handlers/ services/ tests/ utils/ --max-line-length=100 --show-source --statistics
       
-      - name: Run black
+      - name: Run black (Python only)
         run: |
-          black . --check
+          black *.py config/ database/ handlers/ services/ tests/ utils/ --check
       
-      - name: Run isort
+      - name: Run isort (Python only)
         run: |
-          isort . --check-only
+          isort *.py config/ database/ handlers/ services/ tests/ utils/ --check-only
 
   test:
     name: Tests
