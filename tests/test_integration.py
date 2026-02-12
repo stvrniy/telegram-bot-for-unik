@@ -33,8 +33,6 @@ class TestIntegration:
         """
         Інтеграційний тест: Взаємодія між різними функціями моделей БД через прямі SQL запити
         """
-        import database.models as models
-        import sqlite3
         
         # Створюємо тимчасову базу даних
         conn = sqlite3.connect(':memory:')

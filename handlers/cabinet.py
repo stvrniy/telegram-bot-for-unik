@@ -4,23 +4,17 @@ Allows students to view their academic data.
 """
 
 import logging
-from typing import Optional
 
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-from config.settings import settings
-from database.models import get_user, update_user_group, UserRole
+from database.models import get_user
 from services.sumdu_cabinet import (
-    get_cabinet_service,
     get_mock_student,
-    get_mock_subjects,
     get_mock_grades
 )
-from utils.decorators import admin_only, role_required
 
 logger = logging.getLogger(__name__)
 
@@ -110,7 +104,7 @@ def format_grades_list(grades: list) -> str:
                 points = int(grade.points.split('/')[0])
                 total_points += points
                 count += 1
-            except:
+            except Exception:
                 pass
         response += "\n"
     
@@ -270,25 +264,7 @@ async def my_cabinet_command(message: Message):
         return
     
     student = get_mock_student(group_name)
-    subjects = get_mock_subjects(group_name)
-    grades = get_mock_grades()
-    
-    response = (
-        f"👤 *{student.first_name} {student.last_name}*\n"
-        f"🏫 {student.group_name} | 📚 {student.course} курс\n"
-        f"🏢 {student.faculty}\n\n"
-        "━━━━━━━━━━━━━━━━━━━━\n\n"
-        "📚 *Предмети:* {len(subjects)} | "
-        "📊 *Оцінок:* {len(grades)} | "
-        "💰 *Борги:* 0\n\n"
-        "━━━━━━━━━━━━━━━━━━━━\n\n"
-        "📋 *Швидкий доступ:*\n"
-        "• `/subjects` - список предметів\n"
-        "• `/grades` - оцінки\n"
-        "• `/session` - сесія\n"
-        "• `/debts` - борги\n"
-        "• `/cabinet` - повний профіль"
-    )
+    response = format_student_profile(student)
     
     await message.answer(response, parse_mode="Markdown")
 

@@ -3,11 +3,9 @@ Shared decorators and utilities for the Telegram Education Bot.
 """
 
 from functools import wraps
-from typing import Callable, Any, List, Optional
+from typing import Callable, Any, List
 from aiogram.types import Message
-from aiogram.fsm.context import FSMContext
 from config.settings import settings
-from database.models import UserRole
 
 
 def admin_only(func: Callable) -> Callable:
@@ -201,7 +199,7 @@ def format_subject_info(subject_info: dict) -> str:
     
     topics = subject_info.get('topics', [])
     if topics:
-        response += f"\n📚 *Теми курсу:*\n"
+        response += "\n📚 *Теми курсу:*\n"
         for i, topic in enumerate(topics, 1):
             response += f"{i}. {topic}\n"
     

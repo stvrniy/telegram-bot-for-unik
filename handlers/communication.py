@@ -4,22 +4,19 @@ Handles user-to-user messaging, including students with teachers and group leade
 """
 
 import logging
-from typing import Optional
 
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.filters import Command
-from aiogram.types import Message, ReplyKeyboardRemove
+from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-from config.settings import settings
 from database.models import (
     get_user, get_users_by_name, send_message, 
-    get_messages, mark_message_read, get_unread_count,
-    UserRole, get_group_leader, get_users_for_group,
-    get_all_subjects, get_group_subjects, add_group_subject, delete_group_subject
+    get_messages, get_unread_count,
+    get_group_leader, get_all_subjects, get_group_subjects, add_group_subject
 )
-from utils.decorators import admin_only, role_required
+from utils.decorators import role_required
 
 logger = logging.getLogger(__name__)
 
@@ -259,7 +256,6 @@ async def contact_group_leader_command(message: Message):
         )
         return
     
-    leader_id = group_leader['user_id'] if isinstance(group_leader, dict) else group_leader[0]
     leader_name = group_leader['full_name'] if isinstance(group_leader, dict) else group_leader[2]
     
     await message.answer(

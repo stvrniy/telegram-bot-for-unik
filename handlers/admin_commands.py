@@ -1,11 +1,10 @@
 import logging
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
-from config.settings import settings
-from database.models import get_users_by_name, add_event, get_events, edit_event, delete_event, get_all_events, get_users_for_group, update_user_role, get_user
+from database.models import get_users_by_name, add_event, edit_event, delete_event, get_all_events, get_users_for_group, update_user_role, get_user
 from datetime import datetime
 from utils.decorators import admin_only
 

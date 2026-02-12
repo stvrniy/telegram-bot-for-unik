@@ -4,18 +4,16 @@ Allows teachers to manually edit their schedule items.
 """
 
 import logging
-from typing import Optional
 
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
 
-from config.settings import settings
 from database.models import (
     get_user, get_events, edit_event, delete_event,
-    get_teacher_subjects, UserRole, update_user_role
+    get_teacher_subjects, UserRole
 )
 from utils.decorators import validate_date, validate_time
 
@@ -37,9 +35,6 @@ class TeacherEditStates(StatesGroup):
 @router.message(Command("teacher_help"))
 async def teacher_help_command(message: Message):
     """Handle /teacher_help command - show teacher commands."""
-    user = get_user(message.from_user.id)
-    role = user['role'] if user and isinstance(user, dict) else None
-    
     help_text = (
         "👨‍🏫 *Команди викладача:*\n\n"
         "📝 *Редагування розкладу:*\n"

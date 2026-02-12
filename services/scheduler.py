@@ -5,7 +5,6 @@ Uses APScheduler for efficient async scheduling.
 
 import logging
 from datetime import datetime, timedelta
-from typing import Optional
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.interval import IntervalTrigger

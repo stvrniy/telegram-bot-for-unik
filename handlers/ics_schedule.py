@@ -4,23 +4,20 @@ ICS Schedule Handlers - Робота з файлами розкладу .ics
 """
 
 import logging
-from typing import Optional
 
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.filters import Command
-from aiogram.types import Message, Document, FSInputFile
+from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
 from config.settings import settings
 from database.models import (
     add_event, get_events, delete_event, 
-    update_user_group, get_user
+    get_user
 )
 from services.ics_parser import (
-    ICSParser, 
-    parse_ics_content,
-    format_schedule_from_ics
+    ICSParser
 )
 from utils.decorators import admin_only
 

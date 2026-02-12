@@ -6,8 +6,7 @@ Uses SQLite with context managers for safe database handling.
 import sqlite3
 import logging
 from contextlib import contextmanager
-from typing import Optional, List, Tuple, Generator
-from datetime import datetime
+from typing import Optional, List, Generator
 from enum import Enum
 
 from config.settings import settings

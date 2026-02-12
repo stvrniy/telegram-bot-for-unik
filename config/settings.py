@@ -6,7 +6,7 @@ Loads environment variables from .env file.
 import os
 from pathlib import Path
 from dataclasses import dataclass, field
-from typing import Set, Optional
+from typing import Set
 from dotenv import load_dotenv
 
 # Load environment variables from .env file

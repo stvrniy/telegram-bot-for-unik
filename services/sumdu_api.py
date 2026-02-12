@@ -4,14 +4,13 @@ Uses the public API from Sumy State University.
 """
 
 import logging
-from typing import Optional, List, Dict, Any
+from typing import Optional, List, Any
 from datetime import datetime
 from dataclasses import dataclass
 
 import httpx
 from cachetools import TTLCache
 
-from config.settings import settings
 
 logger = logging.getLogger(__name__)
 

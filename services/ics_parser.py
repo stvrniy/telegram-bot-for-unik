@@ -6,11 +6,10 @@ Parses schedule from iCalendar format used by SumDU Cabinet.
 import re
 import logging
 from typing import List, Dict, Optional, Any
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime, timedelta
 from dateutil import tz
 
-from config.settings import settings
 
 logger = logging.getLogger(__name__)
 
@@ -173,8 +172,6 @@ class ICSParser:
             if '+' in dt_str:
                 base, offset = dt_str.split('+')
                 dt_obj = datetime.strptime(base, "%Y%m%dT%H%M%S")
-                offset_hours = int(offset[:2])
-                offset_minutes = int(offset[2:])
                 dt_obj = dt_obj.replace(tzinfo=tz_info)
             else:
                 dt_obj = datetime.strptime(dt_str, "%Y%m%dT%H%M%S")
